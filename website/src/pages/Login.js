@@ -8,6 +8,19 @@ import './Login.css'
 
 function Login() {
 
+    //TESTING, 
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        console.log(email,password)
+    }
+
+
+
+    //TESTING
+
     const [sidebar, setSidebar] = useState(false) 
     /*setSidebar=update*/ /*false means the current value is not showing*/
     const showSidebar = () =>  setSidebar(!sidebar)
@@ -50,25 +63,43 @@ function Login() {
 
         <section className="container">
             <div className="login-box">
-                <form action="">
+                <form id = 'login' action="">
                     <h1>Welcome!</h1>
                     <h3>Log in to access your Carmony account.</h3>
                     <div className="register-link">
                         <p>New to Carmony? <Link to="/Signup">Create an account</Link></p>
                     </div>
-                    <div className="input-box">
-                        <input type="text" placeholder="Username" required />
+                    
+                    <div className = "input-box" onSubmit = {handleSubmit}>
+                     <h3>Login </h3>
+
+                        <label>Email!</label>
+                         <input
+                            type = "email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value = {email}
+                        />
+
+                        <label>Password</label>
+                        <input
+                            type = "password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            value = {password}
+                            />
+
+                        <button>Login</button>
                     </div>
-                    <div className="input-box">
-                        <input type="password" placeholder="password" required />
-                    </div>
+
+
+
+
 
                     <div className="remember-forgot">
                         <label><input type="checkbox" /> Remember me</label>
                         <Link to="/ForgotPassword">Forgot password?</Link>
                     </div>
 
-                    <button type="submit" className="btn">Login</button>
+                    <button type="submit" className="btn">Login Gray</button> 
 
                     <div className="social-connect">
                         <button>
@@ -93,3 +124,13 @@ function Login() {
 }
 
 export default Login
+
+
+
+
+//  <div className="input-box">
+//<input type="text" placeholder="Username" required />
+//</div>
+//<div className="input-box">
+   // <input type="password" placeholder="password" required />
+//</div>
