@@ -7,9 +7,22 @@ import { IconContext } from 'react-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
+import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 function Home() {
+
+  //LOGOUT HANDLER FOR BUTTON ON LINE 82-86
+  const { logout } = useLogout()
+  
+  const { user } = useAuthContext()
+
+    const handleClick = () => {
+      logout()
+    }
+
+
     const [sidebar, setSidebar] = useState(false) 
     /*setSidebar=update*/ /*false means the current value is not showing*/
     const showSidebar = () =>  setSidebar(!sidebar)
@@ -53,14 +66,19 @@ function Home() {
                 </li>
               </ul>
           </div>
-            <div className="Login">
-              <ul>
-                <li>
-                <Link to="/Login"><FontAwesomeIcon icon={faUser} className="user-icon" /> Login
-                </Link>
-                </li>
-              </ul>
-            </div>
+
+            {!user && (
+              <div className="Login">
+                <ul>
+                  <li>
+                  <Link to="/Login"><FontAwesomeIcon icon={faUser} className="user-icon" /> Login
+                  </Link>
+                  </li>
+                </ul>
+              </div> 
+            )}
+
+            {!user && (
             <div className="SignUp">
               <ul>
                 <li>
@@ -68,7 +86,15 @@ function Home() {
                 </Link>
                 </li>
               </ul>
-            </div>
+            </div> 
+            )}
+
+            {user && (
+            <div>
+              <span>{user.email}</span>
+              <button onClick = {handleClick}>Logout</button>
+            </div> )}
+
           </div>
       </div>
       

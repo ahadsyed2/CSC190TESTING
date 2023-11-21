@@ -5,16 +5,24 @@ import { AiOutlineClose } from "react-icons/ai";
 import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
 import './Login.css'
+import { useLogin } from '../hooks/useLogin';
 
 function Login() {
 
     //TESTING, 
+
+    
+
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const{login, error, isLoading} = useLogin()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(email,password)
+        //fires login function in useLogin after email and password have been entered
+        await login(email,password)
+        //console.log(email,password)
     }
 
 
@@ -63,19 +71,19 @@ function Login() {
 
         <section className="container">
             <div className="login-box">
-                <form id = 'login' action="">
                     <h1>Welcome!</h1>
                     <h3>Log in to access your Carmony account.</h3>
                     <div className="register-link">
                         <p>New to Carmony? <Link to="/Signup">Create an account</Link></p>
                     </div>
                     
-                    <div className = "input-box" onSubmit = {handleSubmit}>
-                     <h3>Login </h3>
+                    <form className = "input-box" onSubmit = {handleSubmit}>
+                     
 
-                        <label>Email!</label>
+                        <label>Email</label>
                          <input
                             type = "email"
+                            
                             onChange={(e) => setEmail(e.target.value)}
                             value = {email}
                         />
@@ -87,8 +95,9 @@ function Login() {
                             value = {password}
                             />
 
-                        <button>Login</button>
-                    </div>
+                        <button disabled = {isLoading}>Login</button>
+                        {error && <div className  = "error">{error} </div>}
+                    </form>
 
 
 
@@ -99,8 +108,7 @@ function Login() {
                         <Link to="/ForgotPassword">Forgot password?</Link>
                     </div>
 
-                    <button type="submit" className="btn">Login Gray</button> 
-
+                
                     <div className="social-connect">
                         <button>
                             <img src="https://seeklogo.com/images/F/facebook-icon-logo-819DD0A07B-seeklogo.com.png" alt="Facebook" />
@@ -115,7 +123,6 @@ function Login() {
                             Continue with Apple
                         </button>
                     </div>
-                </form>
             </div>
         </section>
 
