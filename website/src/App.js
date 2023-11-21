@@ -12,6 +12,11 @@ import Posting from './pages/Posting';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 
+//testing
+import Login2 from './pages/Login2'
+import Signup2 from './pages/Signup2'
+
+
 
 function App() {
   return (
@@ -22,11 +27,15 @@ function App() {
           <Route path='/AboutCarmony' Component={AboutCarmony} />
           <Route path='/AboutDealers' Component={AboutDealers} />
           <Route path='/Contact' Component={Contact} />
-          <Route path='/Login' Component={Login} />
-          <Route path='/Signup' Component={Signup} />
+          <Route path='/login' Component={Login} />
+          <Route path='/signup' Component={Signup} />
           <Route path='/Posting' Component={Posting} />
           <Route path='/ForgotPassword' Component={ForgotPassword} />
           <Route path='/ResetPassword' Component={ResetPassword} />
+
+         
+
+
         </Routes>
       </Router>
     
