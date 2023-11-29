@@ -9,18 +9,10 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
+import Navbar from '../components/Navbar';
 
 
 function Home() {
-
-  //LOGOUT HANDLER FOR BUTTON ON LINE 82-86
-  const { logout } = useLogout()
-  
-  const { user } = useAuthContext()
-
-    const handleClick = () => {
-      logout()
-    }
 
 
     const [sidebar, setSidebar] = useState(false) 
@@ -47,77 +39,7 @@ function Home() {
 
   return (
     <>
-      <IconContext.Provider value= {{color: '#fff'}}>
-      <div className='navbar'>
-        <Link to="#" className='hamburger-bars'>
-            <FaBars onClick={showSidebar} />
-        </Link>
-
-        <div className="logo">
-          <img src="https://www.clker.com/cliparts/u/O/L/Q/c/m/car-icon-hi.png" alt="Logo" />
-        </div>
-
-        <div className="top-rightbox">
-          <div className='Post'>
-              <ul>
-                <li>
-                <Link to="/Posting">+ Create a listing
-                </Link>
-                </li>
-              </ul>
-          </div>
-
-            {!user && (
-              <div className="Login">
-                <ul>
-                  <li>
-                  <Link to="/Login"><FontAwesomeIcon icon={faUser} className="user-icon" /> Login
-                  </Link>
-                  </li>
-                </ul>
-              </div> 
-            )}
-
-            {!user && (
-            <div className="SignUp">
-              <ul>
-                <li>
-                <Link to="/Signup"><FontAwesomeIcon icon={faUser} className="user-icon" /> Sign Up
-                </Link>
-                </li>
-              </ul>
-            </div> 
-            )}
-
-            {user && (
-            <div>
-              <span>{user.email}</span>
-              <button onClick = {handleClick}>Logout</button>
-            </div> )}
-
-          </div>
-      </div>
-      
-      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-        <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className="navbar-toggle">
-                <Link to="#" className='hamburger-bars'>
-                    <AiOutlineClose />
-                </Link>
-            </li>
-            {hamburgerMenu.map((item, index) => {
-                return (
-                    <li key={index} className={item.cName}>
-                        <Link to={item.path}>
-                            {item.icon}
-                            <span>{item.title}</span>
-                        </Link>
-                    </li>
-                );
-            })}
-        </ul>
-      </nav>
-      </IconContext.Provider>
+     <Navbar /> 
 
       <div className="box">
           <div className="left-box">
