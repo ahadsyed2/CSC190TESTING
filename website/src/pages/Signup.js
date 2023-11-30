@@ -64,11 +64,7 @@ const Signup = () => {
       </nav>
       </IconContext.Provider>
 
-      <div className='signup'>
-          <h1>Signup</h1>
-        </div>
-
-            
+      
 
         <form className = "login-box" onSubmit = {handleSubmit}>
             <h3>Sign Up</h3>

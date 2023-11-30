@@ -104,25 +104,10 @@ function Login() {
 
 
                     <div className="remember-forgot">
-                        <label><input type="checkbox" /> Remember me</label>
+                        <label><input type="checkbox" />Remember me</label>
                         <Link to="/ForgotPassword">Forgot password?</Link>
                     </div>
 
-                
-                    <div className="social-connect">
-                        <button>
-                            <img src="https://seeklogo.com/images/F/facebook-icon-logo-819DD0A07B-seeklogo.com.png" alt="Facebook" />
-                            Continue with Facebook
-                        </button>
-                        <button>
-                            <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="Google" />
-                            Continue with Google
-                        </button>
-                        <button>
-                            <img src="https://i.pinimg.com/originals/1e/c1/1a/1ec11a869384bc5e59625bac39b6a099.png" alt="Apple" />
-                            Continue with Apple
-                        </button>
-                    </div>
             </div>
         </section>
 
